@@ -1,17 +1,12 @@
-import React from 'react';
+import React from "react";
+import Tracklist from "../Tracklist/Tracklist";
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, onAdd }) => {
   return (
-    <div>
-      {results.length > 0 ? (
-        results.map((track, index) => (
-          <div key={index}>
-            <p>{track.name} - {track.artists.map(artist => artist.name).join(", ")}</p>
-          </div>
-        ))
-      ) : (
-        <p>Aucun résultat trouvé.</p>
-      )}
+    <div className="search-results">
+      <h2>Résultats de recherche</h2>
+      <Tracklist tracks={results} onAdd={onAdd} isRemoval={false} />
+      {/* `isRemoval` est false car ici, on veut ajouter des morceaux */}
     </div>
   );
 };
