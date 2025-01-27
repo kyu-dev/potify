@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import { searchSpotify, authenticateSpotify } from "../../utils/spotify";
+import { searchSpotify, authenticateSpotify, createPlaylist, addTracksToPlaylist } from "../../utils/spotify";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -41,6 +41,22 @@ const App = () => {
     setPlaylistName(newName);
   };
 
+  const handleCreatePlaylist = async () => {
+    const playlistData = {
+      name: playlistName,
+      tracks: playlist // Assurez-vous que cela ne contient que des IDs ou des données valides
+    };
+
+    try {
+      const playlistId = await createPlaylist(playlistData); // Crée la playlist et obtient l'ID
+      const trackUris = playlist.map(track => `spotify:track:${track.id}`); // Formate les URIs des morceaux
+      await addTracksToPlaylist(playlistId, trackUris); // Ajoute les morceaux à la playlist
+      console.log('Morceaux ajoutés à la playlist avec succès');
+    } catch (error) {
+      console.error('Erreur lors de la création de la playlist ou de l\'ajout des morceaux:', error);
+    }
+  };
+
   return (
     <div>
       <h1>Recherche de musique</h1>
@@ -50,8 +66,11 @@ const App = () => {
         playlist={playlist}
         onRemove={removeTrack}
         playlistName={playlistName} // Passe le nom à Playlist
-        onNameChange={handleNameChange} // Passe la fonction pour modifier le nom
+        onNameChange={handleNameChange}
+        onSave={handleCreatePlaylist} // Passe la fonction pour modifier le nom
       />
+      
+      
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import Track from "../Track/Track"; // On importe le composant Track
 
-const Playlist = ({ playlist, onRemove, playlistName, onNameChange }) => {
+const Playlist = ({ playlist, onRemove, playlistName, onNameChange, onSave }) => {
   return (
     <div className="playlist">
       {/* Champ de saisie pour modifier le nom de la playlist */}
@@ -23,7 +23,7 @@ const Playlist = ({ playlist, onRemove, playlistName, onNameChange }) => {
         ))
       )}
       
-      <button className="save-button" >Sauvegarder sur Spotify</button> {/* Optionnel, si tu veux ajouter cette fonctionnalité */}
+      <button className="save-button" onClick={onSave}>Sauvegarder sur Spotify</button> {/* Optionnel, si tu veux ajouter cette fonctionnalité */}
     </div>
   );
 };

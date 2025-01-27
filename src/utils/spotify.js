@@ -1,7 +1,7 @@
 const SPOTIFY_API_URL = "https://api.spotify.com/v1";
 const clientId = "c993e1aa52b24e3aa4c19d9a059c42d5";
 const redirectUri = "http://localhost:5173/";
-const scope = "user-read-private user-read-email playlist-modify-public";
+const scope = "user-read-private user-read-email playlist-modify-public playlist-modify-private";
 
 // Génère un code verifier pour PKCE
 const generateCodeVerifier = () => {
@@ -159,3 +159,65 @@ const handleRedirect = async () => {
 
 // Appelle la fonction lors du chargement initial
 handleRedirect();
+
+export const createPlaylist = async (playlistData) => {
+  const accessToken = localStorage.getItem("access_token");
+  const userId = await getUserId(accessToken);
+
+  const dataToSend = {
+    name: playlistData.name,
+    tracks: [] // On initialise les tracks ici, on les ajoutera plus tard
+  };
+
+  const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dataToSend)
+  });
+
+  if (!response.ok) {
+    throw new Error('Erreur lors de la création de la playlist');
+  }
+
+  const playlist = await response.json();
+  return playlist.id; // Retourne l'ID de la playlist créée
+};
+
+// Nouvelle fonction pour ajouter des morceaux à la playlist
+export const addTracksToPlaylist = async (playlistId, trackUris) => {
+  const accessToken = localStorage.getItem("access_token");
+
+  const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ uris: trackUris }) // Les URIs des morceaux à ajouter
+  });
+
+  if (!response.ok) {
+    throw new Error('Erreur lors de l\'ajout des morceaux à la playlist');
+  }
+
+  return await response.json(); // Retourne la réponse de l'API
+};
+
+// Fonction pour obtenir l'ID de l'utilisateur
+const getUserId = async (accessToken) => {
+  const response = await fetch('https://api.spotify.com/v1/me', {
+    headers: {
+      'Authorization': `Bearer ${accessToken}`
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error('Erreur lors de la récupération de l\'ID de l\'utilisateur');
+  }
+
+  const data = await response.json();
+  return data.id; // Retourne l'ID de l'utilisateur
+};
