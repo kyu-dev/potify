@@ -23,7 +23,7 @@ const Playlist = ({ playlist, onRemove, playlistName, onNameChange }) => {
         ))
       )}
       
-      <button className="save-button">Sauvegarder sur Spotify</button> {/* Optionnel, si tu veux ajouter cette fonctionnalité */}
+      <button className="save-button" >Sauvegarder sur Spotify</button> {/* Optionnel, si tu veux ajouter cette fonctionnalité */}
     </div>
   );
 };
