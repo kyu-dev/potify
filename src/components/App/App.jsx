@@ -3,6 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import { searchSpotify, authenticateSpotify, createPlaylist, addTracksToPlaylist } from "../../utils/spotify";
+import './App.css'; // Importer le CSS pour le composant App
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -58,19 +59,19 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Recherche de musique</h1>
-      <SearchBar search={search} setSearch={setSearch} handleSubmit={handleSubmit} />
-      <SearchResults results={results} onAdd={addTrack} />
+    <div className="app-container">
+      <div className="search-results">
+        <h1>Recherche de musique</h1>
+        <SearchBar search={search} setSearch={setSearch} handleSubmit={handleSubmit} />
+        <SearchResults results={results} onAdd={addTrack} />
+      </div>
       <Playlist
         playlist={playlist}
         onRemove={removeTrack}
-        playlistName={playlistName} // Passe le nom à Playlist
+        playlistName={playlistName}
         onNameChange={handleNameChange}
-        onSave={handleCreatePlaylist} // Passe la fonction pour modifier le nom
+        onSave={handleCreatePlaylist}
       />
-      
-      
     </div>
   );
 };

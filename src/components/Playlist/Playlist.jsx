@@ -1,5 +1,6 @@
 import React from "react";
 import Track from "../Track/Track"; // On importe le composant Track
+import './Playlist.css'; // Importer le CSS pour le composant Playlist
 
 const Playlist = ({ playlist, onRemove, playlistName, onNameChange, onSave }) => {
   return (

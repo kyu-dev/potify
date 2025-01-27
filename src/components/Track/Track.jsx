@@ -1,4 +1,5 @@
 import React from "react";
+import './Track.css'; // Importer le CSS pour le composant Track
 
 const Track = ({ track, onAdd, onRemove, isRemoval }) => {
   if (!track || !track.name || !track.artists || !track.album) {
@@ -19,9 +20,11 @@ const Track = ({ track, onAdd, onRemove, isRemoval }) => {
 
   return (
     <div className="track">
-      <h3>{name}</h3>
-      <p>{artistNames} || {albumName}</p>
-      {albumImage && <img src={albumImage} alt={albumName} width={100} />}
+      {albumImage && <img src={albumImage} alt={albumName} />}
+      <div className="track-info">
+        <h3>{name}</h3>
+        <p>{artistNames} || {albumName}</p>
+      </div>
       {renderAction()}
     </div>
   );

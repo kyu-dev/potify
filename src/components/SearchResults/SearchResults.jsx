@@ -1,5 +1,6 @@
 import React from "react";
 import Tracklist from "../Tracklist/Tracklist";
+import './SearchResults.css'; // Importer le CSS pour le composant SearchResults
 
 const SearchResults = ({ results, onAdd }) => {
   return (
