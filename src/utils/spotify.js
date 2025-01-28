@@ -73,7 +73,7 @@ const getToken = async (code) => {
 };
 
 // Rafraîchit le token d'accès
-const refreshAccessToken = async () => {
+export const refreshAccessToken = async () => {
   const refreshToken = localStorage.getItem("refresh_token");
   if (!refreshToken) {
     console.error("Le token de rafraîchissement est manquant. Veuillez vous réauthentifier.");

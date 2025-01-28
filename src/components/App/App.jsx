@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import { searchSpotify, authenticateSpotify, createPlaylist, addTracksToPlaylist } from "../../utils/spotify";
+import { searchSpotify, authenticateSpotify, createPlaylist, addTracksToPlaylist, refreshAccessToken } from "../../utils/spotify";
 import './App.css'; // Importer le CSS pour le composant App
 
 const App = () => {
@@ -13,12 +13,19 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const accessToken = localStorage.getItem("access_token"); // Vérifier le token d'accès
+    let accessToken = localStorage.getItem("access_token");
 
     if (!accessToken) {
       console.error("Le token d'accès est manquant. Veuillez vous authentifier.");
       await authenticateSpotify();
-      return; // Sortir de la fonction si l'utilisateur n'est pas authentifié
+      return;
+    }
+
+    // Vérifier si le token est expiré et le rafraîchir si nécessaire
+    accessToken = await refreshAccessToken();
+    if (!accessToken) {
+      console.error("Impossible de rafraîchir le token. Veuillez vous réauthentifier.");
+      return;
     }
 
     const data = await searchSpotify(search);
