@@ -1,6 +1,7 @@
 import React from "react";
 import Track from "../Track/Track";
-import './Tracklist.css'; // Importer le CSS pour le composant Tracklist
+
+ // Importer le CSS pour le composant Tracklist
 
 const Tracklist = ({ tracks, onAdd, onRemove, isRemoval }) => {
   return (

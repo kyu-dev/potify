@@ -1,14 +1,15 @@
 import React from "react";
 import Tracklist from "../Tracklist/Tracklist";
-import './SearchResults.css'; // Importer le CSS pour le composant SearchResults
-
+ // Importer le CSS pour le composant SearchResults
+import "../../styles/style.css"
 const SearchResults = ({ results, onAdd }) => {
   return (
-    <div className="search-results">
-      <h2>Résultats de recherche</h2>
+    
+    <div className="search-results p-2 bg-white shadow-lg rounded-lg  w-full">
+    <h2 className="text-xl  font-bold lg:mb-10 lg: ">Résultats de recherche</h2>
       <Tracklist tracks={results} onAdd={onAdd} isRemoval={false} />
-      {/* `isRemoval` est false car ici, on veut ajouter des morceaux */}
     </div>
+    
   );
 };
 

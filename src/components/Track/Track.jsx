@@ -1,5 +1,7 @@
 import React from "react";
-import './Track.css'; // Importer le CSS pour le composant Track
+import "../../styles/style.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const Track = ({ track, onAdd, onRemove, isRemoval }) => {
   if (!track || !track.name || !track.artists || !track.album) {
@@ -13,17 +15,25 @@ const Track = ({ track, onAdd, onRemove, isRemoval }) => {
 
   const renderAction = () => {
     if (isRemoval) {
-      return <button onClick={() => onRemove(track)}>- Retirer</button>;
+      return (
+        <button className="bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded transition duration-200" onClick={() => onRemove(track)}>
+          <FontAwesomeIcon icon={faMinus} /> 
+        </button>
+      );
     }
-    return <button onClick={() => onAdd(track)}>+ Ajouter</button>;
+    return (
+      <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition duration-200" onClick={() => onAdd(track)}>
+        <FontAwesomeIcon icon={faPlus} /> 
+      </button>
+    );
   };
 
   return (
-    <div className="track">
-      {albumImage && <img src={albumImage} alt={albumName} />}
-      <div className="track-info">
-        <h3>{name}</h3>
-        <p>{artistNames} || {albumName}</p>
+    <div className="track flex items-center p-4 border-b border-gray-300 hover:bg-gray-200 transition duration-200">
+      {albumImage && <img className="w-16 h-16 mr-4 rounded-lg shadow" src={albumImage} alt={albumName} />}
+      <div className="track-info flex-1">
+        <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+        <p className="text-gray-600">{artistNames} || {albumName}</p>
       </div>
       {renderAction()}
     </div>

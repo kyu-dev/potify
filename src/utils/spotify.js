@@ -65,7 +65,10 @@ const getToken = async (code) => {
 
   if (data.access_token) {
     localStorage.setItem("access_token", data.access_token);
-    localStorage.setItem("refresh_token", data.refresh_token); // Sauvegarde le refresh token
+    localStorage.setItem("refresh_token", data.refresh_token);
+    // Stocker le temps d'expiration (par exemple, 1 heure)
+    const expirationTime = Date.now() + 3600 * 1000; // 1 heure
+    localStorage.setItem("token_expiration", expirationTime);
     console.log("Access token et refresh token stockés.");
   } else {
     console.error("Erreur lors de la récupération du token :", data);
@@ -99,13 +102,15 @@ export const refreshAccessToken = async () => {
 
     if (data.access_token) {
       localStorage.setItem("access_token", data.access_token);
+      // Mettre à jour le temps d'expiration
+      const expirationTime = Date.now() + 3600 * 1000; // 1 heure
+      localStorage.setItem("token_expiration", expirationTime);
       console.log("Access token rafraîchi avec succès.");
       return data.access_token;
     } else {
       console.error("Erreur lors du rafraîchissement du token :", data);
       if (data.error === 'invalid_grant') {
         console.error("Le refresh token a été révoqué. Veuillez vous réauthentifier.");
-        // Rediriger vers l'authentification
         await authenticateSpotify();
       }
       return null;
@@ -225,4 +230,10 @@ const getUserId = async (accessToken) => {
 
   const data = await response.json();
   return data.id; // Retourne l'ID de l'utilisateur
+};
+
+// Vérifie si le token est expiré
+export const isTokenExpired = () => {
+  const expirationTime = localStorage.getItem("token_expiration");
+  return !expirationTime || Date.now() >= expirationTime;
 };
