@@ -103,6 +103,11 @@ export const refreshAccessToken = async () => {
       return data.access_token;
     } else {
       console.error("Erreur lors du rafraîchissement du token :", data);
+      if (data.error === 'invalid_grant') {
+        console.error("Le refresh token a été révoqué. Veuillez vous réauthentifier.");
+        // Rediriger vers l'authentification
+        await authenticateSpotify();
+      }
       return null;
     }
   } catch (error) {
