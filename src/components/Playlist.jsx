@@ -1,13 +1,14 @@
 import React from "react";
-import Track from "../Track/Track"; // On importe le composant Track
+import Track from "./Track"; // Chemin correct
 // Importer le CSS pour le composant Playlist
+import "../../public/style.css"; // Ajout du CSS
 
 const Playlist = ({ playlist, onRemove, playlistName, onNameChange, onSave }) => {
   return (
-    <div className="playlist p-4 bg-white shadow-md rounded">
+    <div className="playlist p-4 bg-[var(--secondary-color)] shadow-md rounded bor">
       {/* Champ de saisie pour modifier le nom de la playlist */}
       <input 
-        className="focus:outline-none rounded mb-10 text-center w-full"
+        className="focus:outline-none rounded mb-10 font-bold text-xl  "
         value={playlistName} 
         onChange={(e) => onNameChange(e.target.value)} // Utilise la fonction pour changer le nom
       />

@@ -1,5 +1,5 @@
 import React from "react";
-import Track from "../Track/Track";
+import Track from "./Track";
 
  // Importer le CSS pour le composant Tracklist
 

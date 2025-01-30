@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/style.css";
+import "../../public/style.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 

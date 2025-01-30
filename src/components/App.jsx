@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import SearchBar from "../SearchBar/SearchBar";
-import SearchResults from "../SearchResults/SearchResults";
-import Playlist from "../Playlist/Playlist";
-import { searchSpotify, authenticateSpotify, createPlaylist, addTracksToPlaylist, refreshAccessToken, isTokenExpired } from "../../utils/spotify";
+import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
+import Playlist from "./Playlist";
+import { searchSpotify, createPlaylist, addTracksToPlaylist, refreshAccessToken, isTokenExpired } from "../utils/spotify";
  
-import "../../styles/style.css";
+import "../../public/style.css";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -60,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <div className="app-container p-12 p-4 bg-gradient-to-r from-blue-300 to-blue-700 min-h-screen">
+    <div className="app-container p-12  bg-gradient-to-r from-blue-300 to-blue-700 min-h-screen">
       <div className="search-container mb-10">
         <h1 className="text-2xl font-bold text-center text-white mb-20 mt-10">Recherche de musique</h1>
         <SearchBar search={search} setSearch={setSearch} handleSubmit={handleSubmit} />

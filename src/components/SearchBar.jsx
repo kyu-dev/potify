@@ -1,4 +1,5 @@
 // Importer le CSS pour le composant SearchBar
+import "../../public/style.css";
 
 const SearchBar = ({search, setSearch, handleSubmit}) => {
   
