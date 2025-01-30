@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 :root{
-    --primary-color: #000;
-    --secondary-color: #fff;
+    --primary-color: #1d1d1d;
+    --secondary-color: #ffffff;
+    --tertiary-color: #5d00ff2d;
+    --quaternary-color: #1d1d1d;
+    
 }
 
 .dark{
-    --primary-color: #fff;
-    --secondary-color: #000;
+    --primary-color: #000;
+    --secondary-color: #ffffff;
+    --tertiary-color: #5d00ff2d;
+    --quaternary-color: #1d1d1d;
 }
+

@@ -135,7 +135,7 @@ export const searchSpotify = async (searchTerm) => {
   }
 
   try {
-    const url = `${SPOTIFY_API_URL}/search?q=${encodeURIComponent(searchTerm)}&type=track&limit=10`;
+    const url = `${SPOTIFY_API_URL}/search?q=${encodeURIComponent(searchTerm)}&type=track&limit=12`;
 
     const response = await fetch(url, {
       headers: {
