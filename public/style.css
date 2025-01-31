@@ -3,15 +3,16 @@
 :root{
     --primary-color: #1d1d1d;
     --secondary-color: #ffffff;
-    --tertiary-color: #5d00ff2d;
-    --quaternary-color: #1d1d1d;
-    
+    --tertiary-color: #c7a7fffd ;
+    --quaternary-color: #f3f3f3;
+    --quinary-color: #222222;
 }
 
 .dark{
     --primary-color: #ffffff;
-    --secondary-color: #000000;
-    --tertiary-color: #0e0025f5;
+    --secondary-color: #111111;
+    --tertiary-color: #3a137cf5;
     --quaternary-color: #1d1d1d;
+    --quinary-color: #d3d3d3;
 }
 

@@ -22,7 +22,7 @@ const Playlist = ({
       {/* Conteneur qui grandit et scrolle si nécessaire */}
       <div className="results-container flex-grow overflow-y-auto ">
         {playlist.length === 0 ? (
-          <p className="text-[var(--primary-color)]">
+          <p className="text-[var(--quinary-color)]">
             Pas de chansons dans la playlist.
           </p>
         ) : (
@@ -39,7 +39,7 @@ const Playlist = ({
 
       {/* Bouton en bas qui ne bouge pas */}
       <button
-        className="save-button bg-green-500 text-[var(--secondary-color)] px-4 py-2 rounded mt-4 self-end"
+        className="save-button bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mt-4 self-end transition duration-200"
         onClick={onSave}
       >
         Sauvegarder sur Spotify
