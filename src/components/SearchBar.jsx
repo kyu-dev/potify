@@ -5,10 +5,10 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchBar = ({ search, setSearch, handleSubmit }) => {
   return (
-    <div className="search-bar flex justify-center">
+    <div className="search-bar flex justify-center pt-20">
       <form
         onSubmit={handleSubmit}
-        className="flex justify-center px-4 w-[90%] md:w-[60%] lg:max-w-[800px] gap-4 bg-[var(--secondary-color)] rounded-full"
+        className="flex justify-center px-4 w-full sm:w-[70%]  lg:max-w-[800px] gap-4 bg-[var(--secondary-color)] rounded-full"
       >
         <button type="submit" className="">
           <FontAwesomeIcon

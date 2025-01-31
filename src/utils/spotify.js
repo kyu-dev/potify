@@ -66,7 +66,7 @@ const getToken = async (code) => {
   if (data.access_token) {
     localStorage.setItem("access_token", data.access_token);
     localStorage.setItem("refresh_token", data.refresh_token);
-    // Stocker le temps d'expiration (par exemple, 1 heure)
+    // Stocker le temps d'expiration 
     const expirationTime = Date.now() + 3600 * 1000; // 1 heure
     localStorage.setItem("token_expiration", expirationTime);
     console.log("Access token et refresh token stockés.");

@@ -76,7 +76,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="app-container  p-12 bg-[var(--tertiary-color)] min-h-screen">
+      <div className="app-container  md:px-12 px-4 bg-[var(--tertiary-color)] min-h-screen">
         <div className="search-container mb-10">
           <SearchBar
             search={search}
@@ -84,11 +84,11 @@ const App = () => {
             handleSubmit={handleSubmit}
           />
         </div>
-        <div className="main-container flex flex-col lg:flex-row md:flex-col justify-between xl:gap-24  lg:gap-10 gap-20 mt-4">
-          <div className="  md lg:w-[60%] ">
+        <div className="main-container flex flex-col lg:flex-row md:flex-col justify-center xl:gap-24 mt-20 lg:gap-10 gap-20 mt-4">
+          <div className=" max-w-[1000px]  lg:w-[60%] ">
             <SearchResults results={results} onAdd={addTrack} />
           </div>
-          <div className=" md: lg:w-[40%]">
+          <div className=" max-w-[1000px] lg:w-[40%]">
             <Playlist
               playlist={playlist}
               onRemove={removeTrack}

@@ -10,7 +10,7 @@ const Playlist = ({
   onSave,
 }) => {
   return (
-    <div className="playlist rounded-lg p-4 bg-[var(--secondary-color)] shadow-md flex flex-col h-[60vh]"> 
+    <div className="playlist rounded-lg p-4 bg-[var(--secondary-color)] shadow-md flex flex-col h-[60vh] "> 
       {/* Ajout de flex-col et d'une hauteur fixe */}
 
       <input
@@ -20,7 +20,7 @@ const Playlist = ({
       />
 
       {/* Conteneur qui grandit et scrolle si nécessaire */}
-      <div className="results-container flex-grow overflow-y-auto">
+      <div className="results-container flex-grow overflow-y-auto ">
         {playlist.length === 0 ? (
           <p className="text-[var(--primary-color)]">
             Pas de chansons dans la playlist.

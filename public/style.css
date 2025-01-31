@@ -9,9 +9,9 @@
 }
 
 .dark{
-    --primary-color: #000;
-    --secondary-color: #ffffff;
-    --tertiary-color: #5d00ff2d;
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    --tertiary-color: #0e0025f5;
     --quaternary-color: #1d1d1d;
 }
 
